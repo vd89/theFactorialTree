@@ -4,26 +4,35 @@ var chart_config = {
   },
 
   nodeStructure: {
-    text: { name: '4' },
+    text: { name: "1" },
     children: a(4)
   },
 };
 
 
-function a(n) {
+function a(num, n = 2) {
   let arr = [];
+  let fact = 1
   let count = 0
-  for (var i = n - 1; i >= 0; i--) {
-    count++
-    arr.push({ text: { name: n*n  } , children:a(n-1) });
+  if(n <= num) {
+    // return;
+    for (var i =1; i<=n; i++) {
+      // fact *= i
+      count++
+      arr.push({ text: { name: n }, children: a(num, n + 1) });
+      
+    }
+    // console.log(arr);
+    return arr;
+  } else {
+    return
   }
-  return arr;
 }
 
 // // console.log(a(3));
 // function b(n) {
 //   let arr = []
-//    for (var i = 0; i <= n; i++) {
+//    for (var i = n; i >= 0; i--) {
 //      arr.push({ text: { name: i }, children: `${a(n-1)}` });
 //      a(n)
 //    }
